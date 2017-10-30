@@ -13,7 +13,7 @@ public class PhotoLocationTest {
 	private Location photoLocation;
 	private Location photoLocation2;
 	@Before
-	public void initPhotoFilter() {
+	public void initPhotoLocation() {
 		photoLocation = new Location();	
 		photoLocation2 = new Location();	
 	}
