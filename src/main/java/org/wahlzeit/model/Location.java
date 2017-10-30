@@ -1,3 +1,14 @@
+/*
+* Classname: Location
+* Inner classname: Coordinate
+*
+* Version information: 1.0
+*
+* Date: 30.10.2017
+*
+* Copyright notice: Ask me
+*/
+
 package org.wahlzeit.model;
 
 import org.wahlzeit.model.Location.Coordinate;
