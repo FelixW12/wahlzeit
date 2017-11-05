@@ -1,3 +1,14 @@
+/*
+* Classname: EMailTestSuite
+*
+* Version information: 1.0
+*
+* Date: 5.11.2017
+*
+* Copyright notice: Ask me
+*/
+
+
 package org.wahlzeit.services.mailing;
 
 

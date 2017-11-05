@@ -1,3 +1,12 @@
+/*
+* Classname: WahlzeitTestSuite
+*
+* Version information: 1.0
+*
+* Date: 5.11.2017
+*
+* Copyright notice: Ask me
+*/
 
 
 import org.junit.runner.RunWith;
