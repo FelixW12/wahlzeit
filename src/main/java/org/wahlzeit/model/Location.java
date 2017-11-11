@@ -1,7 +1,7 @@
-<<<<<<< HEAD
+
 package org.wahlzeit.model;
 
-=======
+
 /*
 * Classname: Location
 * Inner classname: Coordinate
@@ -13,11 +13,11 @@ package org.wahlzeit.model;
 * Copyright notice: Ask me
 */
 
-package org.wahlzeit.model;
+
 
 import org.wahlzeit.model.Location.Coordinate;
 
->>>>>>> 9391bc36463339473d7faa3870cd00ff1a9aace8
+
 public class Location {
 
 	Coordinate coordinate = new Coordinate();	

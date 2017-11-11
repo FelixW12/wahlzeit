@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-=======
+
 /*
 * Classname: WahlzeitTestSuite
 *
@@ -9,7 +8,7 @@
 *
 * Copyright notice: Ask me
 */
->>>>>>> 9391bc36463339473d7faa3870cd00ff1a9aace8
+
 
 
 import org.junit.runner.RunWith;
