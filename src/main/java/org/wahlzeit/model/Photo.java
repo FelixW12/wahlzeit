@@ -43,6 +43,9 @@ public class Photo extends DataObject {
 	/**
 	 *
 	 */
+	
+	public static Location location = new Location();
+	
 	public static final String IMAGE = "image";
 	public static final String THUMB = "thumb";
 	public static final String LINK = "link";
