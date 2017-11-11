@@ -40,6 +40,7 @@ import org.junit.runners.Suite;
 	org.wahlzeit.utils.StringUtilTest.class,
 	org.wahlzeit.utils.VersionTest.class,
 	
+	org.wahlzeit.model.AnimalPhotoTest.class,	
 })
 
 
