@@ -1,5 +1,23 @@
+<<<<<<< HEAD
 package org.wahlzeit.model;
 
+=======
+/*
+* Classname: Location
+* Inner classname: Coordinate
+*
+* Version information: 1.0
+*
+* Date: 30.10.2017
+*
+* Copyright notice: Ask me
+*/
+
+package org.wahlzeit.model;
+
+import org.wahlzeit.model.Location.Coordinate;
+
+>>>>>>> 9391bc36463339473d7faa3870cd00ff1a9aace8
 public class Location {
 
 	Coordinate coordinate = new Coordinate();	

@@ -1,3 +1,15 @@
+<<<<<<< HEAD
+=======
+/*
+* Classname: WahlzeitTestSuite
+*
+* Version information: 1.0
+*
+* Date: 5.11.2017
+*
+* Copyright notice: Ask me
+*/
+>>>>>>> 9391bc36463339473d7faa3870cd00ff1a9aace8
 
 
 import org.junit.runner.RunWith;

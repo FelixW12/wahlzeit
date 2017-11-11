@@ -1,3 +1,16 @@
+<<<<<<< HEAD
+=======
+/*
+* Classname: PhotoLocationTest
+*
+* Version information: 1.0
+*
+* Date: 30.10.2017
+*
+* Copyright notice: Ask me
+*/
+
+>>>>>>> 9391bc36463339473d7faa3870cd00ff1a9aace8
 package org.wahlzeit.model;
 
 import org.junit.Before;
@@ -13,7 +26,11 @@ public class PhotoLocationTest {
 	private Location photoLocation;
 	private Location photoLocation2;
 	@Before
+<<<<<<< HEAD
 	public void initPhotoFilter() {
+=======
+	public void initPhotoLocation() {
+>>>>>>> 9391bc36463339473d7faa3870cd00ff1a9aace8
 		photoLocation = new Location();	
 		photoLocation2 = new Location();	
 	}
