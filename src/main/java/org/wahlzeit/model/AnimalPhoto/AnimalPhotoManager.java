@@ -17,7 +17,20 @@ import org.wahlzeit.model.Photo;
 import org.wahlzeit.model.PhotoFactory;
 import org.wahlzeit.model.PhotoId;
 import org.wahlzeit.model.PhotoManager;
+import org.wahlzeit.model.PhotoUtil;
+
+import com.google.appengine.api.images.Image;
 
 public class AnimalPhotoManager extends PhotoManager {
 	
+	/**
+	 *
+	 */
+	@Override
+	public Photo createPhoto(String filename, Image uploadedImage) throws Exception {
+		PhotoId id = PhotoId.getNextId();
+		AnimalPhoto result = (AnimalPhoto) PhotoUtil.createPhoto(filename, id, uploadedImage);
+		addPhoto(result);
+		return result;
+	}
 }
