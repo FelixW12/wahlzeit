@@ -1,27 +1,37 @@
 
 package org.wahlzeit.model;
 
+import org.wahlzeit.model.Coordinate.Coordinate;
+import org.wahlzeit.model.Coordinate.Imp.CartesianCoordinate;
 
 /*
 * Classname: Location
-* Inner classname: Coordinate
-*
+* 
 * Version information: 1.0
 *
-* Date: 30.10.2017
+* Date: 18.11.2017
 *
 * Copyright notice: Ask me
 */
 
 
 
-import org.wahlzeit.model.Location.Coordinate;
 
 
 public class Location {
 
-	Coordinate coordinate = new Coordinate();	
+	private Coordinate coordinate;
 	
+	public void setCoordinate(Coordinate c) {
+		coordinate = c;
+	}
+	
+	public Coordinate getCoordinate() {
+		return coordinate;
+	}
+	
+	
+	/*
 	class Coordinate{		
 		double x;
 		double y;
@@ -41,5 +51,5 @@ public class Location {
 			}
 			return false;
 		}
-	}
+	} */
 }

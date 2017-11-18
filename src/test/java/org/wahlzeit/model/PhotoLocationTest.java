@@ -14,6 +14,8 @@ package org.wahlzeit.model;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.wahlzeit.model.Coordinate.Imp.CartesianCoordinate;
+import org.wahlzeit.model.Coordinate.Imp.SpehricCoordinate;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -34,99 +36,111 @@ public class PhotoLocationTest {
 	@Test 
 	public void photoLocationIsEqual() {
 		
-		photoLocation.coordinate.x = 1;
-		photoLocation.coordinate.y = 1;
-		photoLocation.coordinate.z = 1;
+		photoLocation.setCoordinate(new CartesianCoordinate(1,1,1));		
 		
-		photoLocation2.coordinate.x = 1;
-		photoLocation2.coordinate.y = 1;
-		photoLocation2.coordinate.z = 1;
+		photoLocation2.setCoordinate(new CartesianCoordinate(1,1,1));		
 		
-		assertEquals(photoLocation.coordinate.isEqual(photoLocation2.coordinate), true);		
+		assertEquals(photoLocation.getCoordinate().isEqual(photoLocation2.getCoordinate()), true);		
 	}
+	
 	
 	@Test 
 	public void photoLocationNotEqual() {
 		
-		photoLocation.coordinate.x = 2;
-		photoLocation.coordinate.y = 2;
-		photoLocation.coordinate.z = 2;
+		photoLocation.setCoordinate(new CartesianCoordinate(2,2,2));		
 		
-		photoLocation2.coordinate.x = 1;
-		photoLocation2.coordinate.y = 1;
-		photoLocation2.coordinate.z = 1;
+		photoLocation2.setCoordinate(new CartesianCoordinate(1,1,1));		
 		
-		assertEquals(photoLocation.coordinate.isEqual(photoLocation2.coordinate), false);		
+		assertEquals(photoLocation.getCoordinate().isEqual(photoLocation2.getCoordinate()), false);				
 	}
-	
+
 	@Test 
 	public void photoLocationSameValueDifferentVariable() {
 		
-		photoLocation.coordinate.x = 3;
-		photoLocation.coordinate.y = 10;
-		photoLocation.coordinate.z = -6;
+		photoLocation.setCoordinate(new CartesianCoordinate(3,10,-6));		
 		
-		photoLocation2.coordinate.x = -6;
-		photoLocation2.coordinate.y = 3;
-		photoLocation2.coordinate.z = 10;
+		photoLocation2.setCoordinate(new CartesianCoordinate(-6,3,10));		
 		
-		assertEquals(photoLocation.coordinate.isEqual(photoLocation2.coordinate), false);		
+		assertEquals(photoLocation.getCoordinate().isEqual(photoLocation2.getCoordinate()), false);	
 	}
 	
 	@Test 
-	public void photoLocationDifferenRandomVariables() {
+	public void photoLocationDifferentVariables() {		
+		photoLocation.setCoordinate(new CartesianCoordinate(0,0,0));		
 		
-		photoLocation.coordinate.x = 0;
-		photoLocation.coordinate.y = 0;
-		photoLocation.coordinate.z = 0;
+		photoLocation2.setCoordinate(new CartesianCoordinate(-2342341,1233,31));		
 		
-		photoLocation2.coordinate.x = -2342341;
-		photoLocation2.coordinate.y = 1233;
-		photoLocation2.coordinate.z = 31;
-		
-		assertEquals(photoLocation.coordinate.isEqual(photoLocation2.coordinate), false);		
+		assertEquals(photoLocation.getCoordinate().isEqual(photoLocation2.getCoordinate()), false);		
 	}
 	
-	
+
 	@Test 
 	public void photoLocationDistanceEasyTest() {
 		
-		photoLocation.coordinate.x = 0;
-		photoLocation.coordinate.y = 0;
-		photoLocation.coordinate.z = 0;
+		photoLocation.setCoordinate(new CartesianCoordinate(0,0,0));		
 		
-		photoLocation2.coordinate.x = 2;
-		photoLocation2.coordinate.y = 2;
-		photoLocation2.coordinate.z = 2;
+		photoLocation2.setCoordinate(new CartesianCoordinate(2,2,2));
 		
-		assertEquals(photoLocation.coordinate.getDistance(photoLocation2.coordinate), 3.4641,0.1);		
+		assertEquals(photoLocation.getCoordinate().getDistance(photoLocation2.getCoordinate()), 3.4641,0.1);		
 	}
-	
+
 	@Test 
-	public void photoLocationDistanceRandomNumberTest() {
+	public void photoLocationDistanceRandomNumberTest() {	
+		photoLocation.setCoordinate(new CartesianCoordinate(3,4,7));		
 		
-		photoLocation.coordinate.x = 3;
-		photoLocation.coordinate.y = 4;
-		photoLocation.coordinate.z = 7;
-		
-		photoLocation2.coordinate.x = 6;
-		photoLocation2.coordinate.y = 0;
-		photoLocation2.coordinate.z = 12;
-		
-		assertEquals(photoLocation.coordinate.getDistance(photoLocation2.coordinate), 7.0711,0.1);	
+		photoLocation2.setCoordinate(new CartesianCoordinate(6,0,12));
+		assertEquals(photoLocation.getCoordinate().getDistance(photoLocation2.getCoordinate()), 7.0711,0.1);
+
 	}
 
 	@Test 
 	public void photoLocationDistanceExtremNumberTest() {
+		photoLocation.setCoordinate(new CartesianCoordinate(-50,40,120));		
 		
-		photoLocation.coordinate.x = -50; 
-		photoLocation.coordinate.y = 40;
-		photoLocation.coordinate.z = 120;
-
-		photoLocation2.coordinate.x = 2000;
-		photoLocation2.coordinate.y = -1000000;
-		photoLocation2.coordinate.z = 500;
-		
-		assertEquals(photoLocation.coordinate.getDistance(photoLocation2.coordinate), 1000042.1733607,0.1);	
+		photoLocation2.setCoordinate(new CartesianCoordinate(2000,-1000000,500));
+		assertEquals(photoLocation.getCoordinate().getDistance(photoLocation2.getCoordinate()), 1000042.1733607,0.1);
 	}
+	
+	@Test 
+	public void photoLocationDistanceEasyTestSpherical() {
+		
+		photoLocation.setCoordinate(new SpehricCoordinate(0,0,0));		
+		
+		photoLocation2.setCoordinate(new CartesianCoordinate(2,2,2));
+		
+		assertEquals(photoLocation.getCoordinate().getDistance(photoLocation2.getCoordinate()), 3.4641,0.1);		
+	}
+
+	@Test 
+	public void photoLocationDistanceRandomNumberTestSpherical() {	
+		photoLocation.setCoordinate(new SpehricCoordinate(8.6023252670426,0.92729521800161,0.62024948598282));		
+		
+		photoLocation2.setCoordinate(new CartesianCoordinate(6,0,12));
+		assertEquals(photoLocation.getCoordinate().getDistance(photoLocation2.getCoordinate()), 7.0711,0.1);
+	}
+	
+	@Test 
+	public void photoLocationDistanceRandomNumberTestSphericalAsLocation() {	
+		photoLocation.setCoordinate(new SpehricCoordinate(8.6023252670426,0.92729521800161,0.62024948598282));		
+		
+		photoLocation2.setCoordinate(new CartesianCoordinate(6,0,12));
+		assertEquals(photoLocation.getCoordinate().getCartesianDistance(photoLocation2.getCoordinate()), 7.0711,0.1);
+	}
+
+	@Test 
+	public void photoLocationDistanceRandomNumberTestSphericalAsSpheric() {	
+		photoLocation.setCoordinate(new SpehricCoordinate(8.6023252670426,0.92729521800161,0.62024948598282));		
+		
+		photoLocation2.setCoordinate(new CartesianCoordinate(6,0,12));
+		assertEquals(photoLocation.getCoordinate().getSphericDistance(photoLocation2.getCoordinate()), 7.0711,0.1);
+	}
+	@Test 
+	public void photoLocationDistanceRandomNumberTestSphericalIsEqual() {	
+		photoLocation.setCoordinate(new SpehricCoordinate(8.6023252670426,0.92729521800161,0.62024948598282));		
+		
+		photoLocation2.setCoordinate(new CartesianCoordinate(3,4,7));
+		assertTrue(photoLocation.getCoordinate().isEqual(photoLocation2.getCoordinate()));
+	}
+
+
 }
