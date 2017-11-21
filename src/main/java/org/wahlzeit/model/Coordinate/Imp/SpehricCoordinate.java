@@ -36,7 +36,7 @@ public class SpehricCoordinate extends AbstractCoordinate {
 
 	@Override
 	public double getDistance(Coordinate c) {
-		return getSphericDistance(c);
+		return getCartesianDistance(c);
 	}
 
 	@Override
