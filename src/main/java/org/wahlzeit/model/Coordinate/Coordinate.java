@@ -13,7 +13,11 @@ public interface Coordinate {
 
 	double getCartesianDistance(Coordinate c);
 	
+	Coordinate asCartesianCoordinate();
+	
 	double getSphericDistance(Coordinate c);
+	
+	Coordinate asSphericCoordinate();
 	
 	double getDistance(Coordinate c);
 	

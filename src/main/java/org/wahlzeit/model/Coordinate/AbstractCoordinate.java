@@ -28,6 +28,13 @@ public abstract class AbstractCoordinate implements Coordinate {
 		}
 		return false;
 	}
+	
+	
+	@Override
+	public abstract Coordinate asCartesianCoordinate();
+	
+	@Override
+	public abstract Coordinate asSphericCoordinate();	
 
 	@Override
 	public abstract double getX();

@@ -10,6 +10,7 @@
 package org.wahlzeit.model.Coordinate.Imp;
 
 import org.wahlzeit.model.Coordinate.AbstractCoordinate;
+import org.wahlzeit.model.Coordinate.Coordinate;
 
 public class CartesianCoordinate extends AbstractCoordinate {
 
@@ -73,6 +74,18 @@ public class CartesianCoordinate extends AbstractCoordinate {
 	public double getLatitude() {
 		return Math.atan(Math.sqrt(	Math.pow(x , 2) + Math.pow(y, 2)) / z);
 	}
+
+	@Override
+	public Coordinate asCartesianCoordinate() {
+		return this;
+	}
+
+	@Override
+	public Coordinate asSphericCoordinate() {
+		return new SpehricCoordinate(getLongitude(),getLatitude(),getRadius());
+	}
+
+
 	
 
 }
