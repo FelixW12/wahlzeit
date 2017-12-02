@@ -53,26 +53,37 @@ public class SpehricCoordinate extends AbstractCoordinate {
 	} */
 
 	public double getX() {
-		return getRadius()* Math.sin(getLatitude())*Math.cos(getLongitude());
+			
+		double x = getRadius()* Math.sin(getLatitude())*Math.cos(getLongitude());
+		assertClassInvariantDoubleIsNotNegative(x);
+		return x;	
+		
 	}
 
 	public double getY() {
-		return getRadius()* Math.sin(getLatitude())*Math.sin(getLongitude());
+		double y = getRadius()* Math.sin(getLatitude())*Math.sin(getLongitude());
+		assertClassInvariantDoubleIsNotNegative(y);
+		return y;	
 	}
 
 	public double getZ() {
-		return getRadius()* Math.cos(getLatitude());
+		double z = getRadius()* Math.cos(getLatitude());
+		assertClassInvariantDoubleIsNotNegative(z);
+		return z;	
 	}
 
 	public double getLongitude() {
+		assertClassInvariantDoubleIsNotNegative(longitude);
 		return longitude;
 	}
 
 	public double getRadius() {
+		assertClassInvariantDoubleIsNotNegative(radius);
 		return radius;
 	}
 
 	public double getLatitude() {
+		assertClassInvariantDoubleIsNotNegative(latitude);
 		return latitude;
 	}
 

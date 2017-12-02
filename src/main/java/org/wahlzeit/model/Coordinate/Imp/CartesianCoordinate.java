@@ -52,27 +52,37 @@ public class CartesianCoordinate extends AbstractCoordinate {
 	} */
 
 	public double getX() {
+		assertClassInvariantDoubleIsNotNegative(x);
 		return x;
 	}
 
 	public double getY() {
+		assertClassInvariantDoubleIsNotNegative(y);
 		return y;
 	}
 
 	public double getZ() {
+		assertClassInvariantDoubleIsNotNegative(z);
 		return z;
 	}
 
-	public double getLongitude() {
-		return Math.atan(y/x);		
+	public double getLongitude() {		
+		double longitude = Math.atan(y/x);		
+		assertClassInvariantDoubleIsNotNegative(longitude);
+		return longitude;
 	}
 
-	public double getRadius() {
-		return Math.sqrt(Math.pow(x , 2) + Math.pow(y, 2) + Math.pow(z, 2));
+	public double getRadius() { 		
+		double radius = Math.sqrt(Math.pow(x , 2) + Math.pow(y, 2) + Math.pow(z, 2));	
+		assertClassInvariantDoubleIsNotNegative(radius);
+		return radius;	
 	}
 
 	public double getLatitude() {
-		return Math.atan(Math.sqrt(	Math.pow(x , 2) + Math.pow(y, 2)) / z);
+		
+		double latitude = Math.atan(Math.sqrt(	Math.pow(x , 2) + Math.pow(y, 2)) / z);
+		assertClassInvariantDoubleIsNotNegative(latitude);
+		return latitude;	 
 	}
 
 	@Override
