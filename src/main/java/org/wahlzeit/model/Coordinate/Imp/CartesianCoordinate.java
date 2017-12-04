@@ -52,17 +52,14 @@ public class CartesianCoordinate extends AbstractCoordinate {
 	} */
 
 	public double getX() {
-		assertClassInvariantDoubleIsNotNegative(x);
 		return x;
 	}
 
 	public double getY() {
-		assertClassInvariantDoubleIsNotNegative(y);
 		return y;
 	}
 
 	public double getZ() {
-		assertClassInvariantDoubleIsNotNegative(z);
 		return z;
 	}
 
