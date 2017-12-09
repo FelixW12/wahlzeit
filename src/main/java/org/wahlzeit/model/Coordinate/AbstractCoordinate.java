@@ -13,7 +13,11 @@ public abstract class AbstractCoordinate implements Coordinate {
 		}		
 		double distance = Math.sqrt(Math.pow(getX() - c.getX(), 2) + Math.pow(getY() - c.getY(), 2) + Math.pow(getZ() - c.getZ(), 2));
 		assertClassInvariants();
-		assertPostCondition(distance);
+		try {
+			testPostCondition(distance);
+		}catch(negativeValueException e){
+			  System.out.println(e.getMessage());
+		}	
 		return distance;
 		 
 	}
@@ -27,7 +31,11 @@ public abstract class AbstractCoordinate implements Coordinate {
 		}		
 		double distance =6371 *Math.acos(Math.cos(getLongitude())*Math.cos(c.getLongitude()) + Math.sin(getLongitude())*Math.sin(c.getLongitude())*Math.cos(getLatitude()-c.getLatitude()));
 		assertClassInvariants();
-		assertPostCondition(distance);
+		try {
+			testPostCondition(distance);
+		}catch(negativeValueException e){
+			  System.out.println(e.getMessage());
+		}	
 		return distance;
 	
 	}
@@ -41,7 +49,13 @@ public abstract class AbstractCoordinate implements Coordinate {
 		}
 		double distance =  getSphericDistance(c);	
 		assertClassInvariants();
-		assertPostCondition(distance);
+		
+		try {
+			testPostCondition(distance);
+		}catch(negativeValueException e){
+			  System.out.println(e.getMessage());
+		}		
+
 		return distance;
 	}
 
@@ -68,8 +82,8 @@ public abstract class AbstractCoordinate implements Coordinate {
 		throw new coordinateNullException();
 	}
 	
-	public void assertPostCondition(double ob ) {
-		assertTrue(ob > 0);
+	public void testPostCondition(double ob ) throws negativeValueException {
+		throw new negativeValueException();
 	}
 	
 	public void assertClassInvariants() {
@@ -79,13 +93,22 @@ public abstract class AbstractCoordinate implements Coordinate {
 		 */
 	}
 	
-	class coordinateNullException extends Exception
+	public class coordinateNullException extends Exception
 	{
 		coordinateNullException()
 	    {
 	        super("Coordiante ist null");
 	    }
 	}
+	
+	public class negativeValueException extends Exception
+	{
+		negativeValueException()
+	    {
+	        super("wert ist kleiner 0");
+	    }
+	}
+	
 	
 	@Override
 	public abstract Coordinate asCartesianCoordinate();

@@ -11,6 +11,7 @@ package org.wahlzeit.model.Coordinate.Imp;
 
 import org.wahlzeit.model.Coordinate.AbstractCoordinate;
 import org.wahlzeit.model.Coordinate.Coordinate;
+import org.wahlzeit.model.Coordinate.AbstractCoordinate.negativeValueException;
 
 public class CartesianCoordinate extends AbstractCoordinate {
 
@@ -53,37 +54,61 @@ public class CartesianCoordinate extends AbstractCoordinate {
 
 	public double getX() {
 
-		assertPostCondition(x);
+		try {
+			testPostCondition(x);
+		}catch(negativeValueException e){
+			  System.out.println(e.getMessage());
+		}
 		return x;
 	}
 
 	public double getY() {
 
-		assertPostCondition(y);
+		try {
+			testPostCondition(y);
+		}catch(negativeValueException e){
+			  System.out.println(e.getMessage());
+		}
 		return y;
 	}
 
 	public double getZ() {
-		assertPostCondition(z);
+		try {
+			testPostCondition(z);
+		}catch(negativeValueException e){
+			  System.out.println(e.getMessage());
+		}	
 		return z;
 	}
 
 	public double getLongitude() {		
 		double longitude = Math.atan(y/x);		
-		assertPostCondition(longitude);
+		try {
+			testPostCondition(longitude);
+		}catch(negativeValueException e){
+			  System.out.println(e.getMessage());
+		}
 		return longitude;
 	}
 
 	public double getRadius() { 		
 		double radius = Math.sqrt(Math.pow(x , 2) + Math.pow(y, 2) + Math.pow(z, 2));	
-		assertPostCondition(radius);
+		try {
+			testPostCondition(radius);
+		}catch(negativeValueException e){
+			  System.out.println(e.getMessage());
+		}
 		return radius;	
 	}
 
 	public double getLatitude() {
 		
 		double latitude = Math.atan(Math.sqrt(	Math.pow(x , 2) + Math.pow(y, 2)) / z);
-		assertPostCondition(latitude);
+		try {
+			testPostCondition(latitude);
+		}catch(negativeValueException e){
+			  System.out.println(e.getMessage());
+		}
 		return latitude;	 
 	}
 

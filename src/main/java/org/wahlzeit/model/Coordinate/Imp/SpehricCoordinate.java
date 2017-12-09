@@ -11,6 +11,7 @@ package org.wahlzeit.model.Coordinate.Imp;
 
 import org.wahlzeit.model.Coordinate.AbstractCoordinate;
 import org.wahlzeit.model.Coordinate.Coordinate;
+import org.wahlzeit.model.Coordinate.AbstractCoordinate.negativeValueException;
 
 public class SpehricCoordinate extends AbstractCoordinate {
 
@@ -55,7 +56,11 @@ public class SpehricCoordinate extends AbstractCoordinate {
 	public double getX() {
 			
 		double x = getRadius()* Math.sin(getLatitude())*Math.cos(getLongitude());
-		assertPostCondition(x);
+		try {
+			testPostCondition(x);
+		}catch(negativeValueException e){
+			  System.out.println(e.getMessage());
+		};
 		return x;	
 		
 	}
@@ -63,7 +68,11 @@ public class SpehricCoordinate extends AbstractCoordinate {
 	public double getY() {
 		double y = getRadius()* Math.sin(getLatitude())*Math.sin(getLongitude());
 
-		assertPostCondition(y);
+		try {
+			testPostCondition( y);
+		}catch(negativeValueException e){
+			  System.out.println(e.getMessage());
+		};
 
 		return y;	
 	}
@@ -71,23 +80,38 @@ public class SpehricCoordinate extends AbstractCoordinate {
 	public double getZ() {
 		double z = getRadius()* Math.cos(getLatitude());
 
-		assertPostCondition(z);
-
+		try {
+			testPostCondition( z);
+		}catch(negativeValueException e){
+			  System.out.println(e.getMessage());
+		}
 		return z;	
 	}
 
 	public double getLongitude() {
-		assertPostCondition(longitude);
+		try {
+			testPostCondition( longitude);
+		}catch(negativeValueException e){
+			  System.out.println(e.getMessage());
+		};
 		return longitude;
 	}
 
 	public double getRadius() {
-		assertPostCondition(radius);
+		try {
+			testPostCondition( radius);
+		}catch(negativeValueException e){
+			  System.out.println(e.getMessage());
+		};
 		return radius;
 	}
 
 	public double getLatitude() {
-		assertPostCondition(latitude);
+		try {
+			testPostCondition( latitude);
+		}catch(negativeValueException e){
+			  System.out.println(e.getMessage());
+		};
 		return latitude;
 	}
 
