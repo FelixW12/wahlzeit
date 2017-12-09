@@ -1,6 +1,5 @@
 package org.wahlzeit.model.Coordinate;
 
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 public abstract class AbstractCoordinate implements Coordinate {
