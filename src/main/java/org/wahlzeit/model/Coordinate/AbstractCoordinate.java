@@ -1,5 +1,7 @@
 package org.wahlzeit.model.Coordinate;
 
+import org.wahlzeit.model.coordinateNullException;
+import org.wahlzeit.model.negativeValueException;
 
 public abstract class AbstractCoordinate implements Coordinate {
 
@@ -92,21 +94,7 @@ public abstract class AbstractCoordinate implements Coordinate {
 		 */
 	}
 	
-	public class coordinateNullException extends Exception
-	{
-		coordinateNullException()
-	    {
-	        super("Coordiante ist null");
-	    }
-	}
-	
-	public class negativeValueException extends Exception
-	{
-		negativeValueException()
-	    {
-	        super("wert ist kleiner 0");
-	    }
-	}
+
 	
 	
 	@Override

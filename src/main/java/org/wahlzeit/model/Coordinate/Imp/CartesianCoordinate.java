@@ -11,7 +11,9 @@ package org.wahlzeit.model.Coordinate.Imp;
 
 import org.wahlzeit.model.Coordinate.AbstractCoordinate;
 import org.wahlzeit.model.Coordinate.Coordinate;
-import org.wahlzeit.model.Coordinate.AbstractCoordinate.negativeValueException;
+import org.wahlzeit.model.coordinateNullException;
+import org.wahlzeit.model.negativeValueException;
+
 
 public class CartesianCoordinate extends AbstractCoordinate {
 
