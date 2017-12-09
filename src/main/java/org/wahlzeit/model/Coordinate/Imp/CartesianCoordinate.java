@@ -52,36 +52,36 @@ public class CartesianCoordinate extends AbstractCoordinate {
 	} */
 
 	public double getX() {
-		assertClassInvariantDoubleIsNotNegative(x);
+		assertPostCondition(x);
 		return x;
 	}
 
 	public double getY() {
-		assertClassInvariantDoubleIsNotNegative(y);
+		assertPostCondition(y);
 		return y;
 	}
 
 	public double getZ() {
-		assertClassInvariantDoubleIsNotNegative(z);
+		assertPostCondition(z);
 		return z;
 	}
 
 	public double getLongitude() {		
 		double longitude = Math.atan(y/x);		
-		assertClassInvariantDoubleIsNotNegative(longitude);
+		assertPostCondition(longitude);
 		return longitude;
 	}
 
 	public double getRadius() { 		
 		double radius = Math.sqrt(Math.pow(x , 2) + Math.pow(y, 2) + Math.pow(z, 2));	
-		assertClassInvariantDoubleIsNotNegative(radius);
+		assertPostCondition(radius);
 		return radius;	
 	}
 
 	public double getLatitude() {
 		
 		double latitude = Math.atan(Math.sqrt(	Math.pow(x , 2) + Math.pow(y, 2)) / z);
-		assertClassInvariantDoubleIsNotNegative(latitude);
+		assertPostCondition(latitude);
 		return latitude;	 
 	}
 
