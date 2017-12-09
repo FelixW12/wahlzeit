@@ -52,26 +52,19 @@ public class CartesianCoordinate extends AbstractCoordinate {
 	} */
 
 	public double getX() {
-<<<<<<< HEAD
+
 		assertPostCondition(x);
-=======
->>>>>>> 530ddc9857460ac2faeaa04d832f0adf84b3eaac
 		return x;
 	}
 
 	public double getY() {
-<<<<<<< HEAD
+
 		assertPostCondition(y);
-=======
->>>>>>> 530ddc9857460ac2faeaa04d832f0adf84b3eaac
 		return y;
 	}
 
 	public double getZ() {
-<<<<<<< HEAD
 		assertPostCondition(z);
-=======
->>>>>>> 530ddc9857460ac2faeaa04d832f0adf84b3eaac
 		return z;
 	}
 
