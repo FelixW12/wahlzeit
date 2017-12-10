@@ -86,11 +86,13 @@ public abstract class AbstractCoordinate implements Coordinate {
 		return false;
 	}
 	
-	public void testPrecondition(Object ob ) throws coordinateNullException{		
+	public void testPrecondition(Object ob ) throws coordinateNullException{				
+		if(ob == null)
 		throw new coordinateNullException();
 	}
 	
 	public void testPostCondition(double ob ) throws negativeValueException {
+		if(ob < 0)
 		throw new negativeValueException();
 	}
 	

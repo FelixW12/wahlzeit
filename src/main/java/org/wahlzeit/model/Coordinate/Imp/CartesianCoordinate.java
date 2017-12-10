@@ -55,32 +55,14 @@ public class CartesianCoordinate extends AbstractCoordinate {
 	} */
 
 	public double getX() {
-
-		try {
-			testPostCondition(x);
-		}catch(negativeValueException e){
-			  System.err.println(e.getMessage());
-			  
-		}
 		return x;
 	}
 
 	public double getY() {
-
-		try {
-			testPostCondition(y);
-		}catch(negativeValueException e){
-			  System.err.println(e.getMessage());
-		}
 		return y;
 	}
 
 	public double getZ() {
-		try {
-			testPostCondition(z);
-		}catch(negativeValueException e){
-			  System.err.println(e.getMessage());
-		}	
 		return z;
 	}
 
