@@ -11,6 +11,7 @@ public abstract class AbstractCoordinate implements Coordinate {
 			testPrecondition(c);
 		}catch(coordinateNullException e){
 			  System.out.println(e.getMessage());
+			  return -1;
 		}		
 		double distance = Math.sqrt(Math.pow(getX() - c.getX(), 2) + Math.pow(getY() - c.getY(), 2) + Math.pow(getZ() - c.getZ(), 2));
 		assertClassInvariants();
@@ -29,6 +30,7 @@ public abstract class AbstractCoordinate implements Coordinate {
 			testPrecondition(c);
 		}catch(coordinateNullException e){
 			  System.out.println(e.getMessage());
+			  return -1;
 		}		
 		double distance =6371 *Math.acos(Math.cos(getLongitude())*Math.cos(c.getLongitude()) + Math.sin(getLongitude())*Math.sin(c.getLongitude())*Math.cos(getLatitude()-c.getLatitude()));
 		assertClassInvariants();
@@ -47,6 +49,7 @@ public abstract class AbstractCoordinate implements Coordinate {
 			testPrecondition(c);
 		}catch(coordinateNullException e){
 			  System.out.println(e.getMessage());
+			  return -1;
 		}
 		double distance =  getSphericDistance(c);	
 		assertClassInvariants();
@@ -66,6 +69,7 @@ public abstract class AbstractCoordinate implements Coordinate {
 			testPrecondition(c);
 		}catch(coordinateNullException e){
 			  System.out.println(e.getMessage());
+			  return false;
 		}	
 		
 		if(getLatitude() == c.getLatitude()) {

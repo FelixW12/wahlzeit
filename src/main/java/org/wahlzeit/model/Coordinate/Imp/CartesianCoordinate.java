@@ -59,7 +59,8 @@ public class CartesianCoordinate extends AbstractCoordinate {
 		try {
 			testPostCondition(x);
 		}catch(negativeValueException e){
-			  System.out.println(e.getMessage());
+			  System.err.println(e.getMessage());
+			  
 		}
 		return x;
 	}
@@ -69,7 +70,7 @@ public class CartesianCoordinate extends AbstractCoordinate {
 		try {
 			testPostCondition(y);
 		}catch(negativeValueException e){
-			  System.out.println(e.getMessage());
+			  System.err.println(e.getMessage());
 		}
 		return y;
 	}
@@ -78,7 +79,7 @@ public class CartesianCoordinate extends AbstractCoordinate {
 		try {
 			testPostCondition(z);
 		}catch(negativeValueException e){
-			  System.out.println(e.getMessage());
+			  System.err.println(e.getMessage());
 		}	
 		return z;
 	}
@@ -88,7 +89,7 @@ public class CartesianCoordinate extends AbstractCoordinate {
 		try {
 			testPostCondition(longitude);
 		}catch(negativeValueException e){
-			  System.out.println(e.getMessage());
+			  System.err.println(e.getMessage());
 		}
 		return longitude;
 	}
@@ -98,7 +99,7 @@ public class CartesianCoordinate extends AbstractCoordinate {
 		try {
 			testPostCondition(radius);
 		}catch(negativeValueException e){
-			  System.out.println(e.getMessage());
+			  System.err.println(e.getMessage());
 		}
 		return radius;	
 	}
@@ -109,7 +110,7 @@ public class CartesianCoordinate extends AbstractCoordinate {
 		try {
 			testPostCondition(latitude);
 		}catch(negativeValueException e){
-			  System.out.println(e.getMessage());
+			  System.err.println(e.getMessage());
 		}
 		return latitude;	 
 	}
