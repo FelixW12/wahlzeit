@@ -10,7 +10,7 @@ public abstract class AbstractCoordinate implements Coordinate {
 		try {
 			testPrecondition(c);
 		}catch(coordinateNullException e){
-			  System.out.println(e.getMessage());
+			  System.err.println(e.getMessage());
 			  return -1;
 		}		
 		double distance = Math.sqrt(Math.pow(getX() - c.getX(), 2) + Math.pow(getY() - c.getY(), 2) + Math.pow(getZ() - c.getZ(), 2));
@@ -18,7 +18,8 @@ public abstract class AbstractCoordinate implements Coordinate {
 		try {
 			testPostCondition(distance);
 		}catch(negativeValueException e){
-			  System.out.println(e.getMessage());
+			  System.err.println(e.getMessage());
+			  return -1;
 		}	
 		return distance;
 		 
@@ -38,6 +39,7 @@ public abstract class AbstractCoordinate implements Coordinate {
 			testPostCondition(distance);
 		}catch(negativeValueException e){
 			  System.out.println(e.getMessage());
+			  return -1;
 		}	
 		return distance;
 	
@@ -48,7 +50,7 @@ public abstract class AbstractCoordinate implements Coordinate {
 		try {
 			testPrecondition(c);
 		}catch(coordinateNullException e){
-			  System.out.println(e.getMessage());
+			  System.err.println(e.getMessage());
 			  return -1;
 		}
 		double distance =  getSphericDistance(c);	
@@ -57,7 +59,8 @@ public abstract class AbstractCoordinate implements Coordinate {
 		try {
 			testPostCondition(distance);
 		}catch(negativeValueException e){
-			  System.out.println(e.getMessage());
+			  System.err.println(e.getMessage());
+			  return -1;
 		}		
 
 		return distance;
@@ -68,7 +71,7 @@ public abstract class AbstractCoordinate implements Coordinate {
 		try {
 			testPrecondition(c);
 		}catch(coordinateNullException e){
-			  System.out.println(e.getMessage());
+			  System.err.println(e.getMessage());
 			  return false;
 		}	
 		
