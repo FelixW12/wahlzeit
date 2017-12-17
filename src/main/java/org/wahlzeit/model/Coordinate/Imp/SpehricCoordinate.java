@@ -14,11 +14,11 @@ import org.wahlzeit.model.Coordinate.Coordinate;
 import org.wahlzeit.model.coordinateNullException;
 import org.wahlzeit.model.negativeValueException;
 
-public class SpehricCoordinate extends AbstractCoordinate {
+public final class SpehricCoordinate extends AbstractCoordinate {
 
-	private double latitude;
-	private double longitude;
-	private double radius;
+	private final double latitude;
+	private final double longitude;
+	private final double radius;
 	
 	public SpehricCoordinate( double latitude,double longitude,double radius) {
 		this.latitude = latitude;
@@ -105,7 +105,12 @@ public class SpehricCoordinate extends AbstractCoordinate {
 
 	@Override
 	public Coordinate asSphericCoordinate() {
-		return this;
+		try {
+			return (SpehricCoordinate)this.clone();
+		} catch (CloneNotSupportedException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }

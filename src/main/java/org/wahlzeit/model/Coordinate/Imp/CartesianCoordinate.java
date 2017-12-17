@@ -15,11 +15,11 @@ import org.wahlzeit.model.coordinateNullException;
 import org.wahlzeit.model.negativeValueException;
 
 
-public class CartesianCoordinate extends AbstractCoordinate {
+public final class CartesianCoordinate extends AbstractCoordinate {
 
-	private double x;
-	private double y;
-	private double z;	
+	private final double x;
+	private final double y;
+	private final double z;	
 	public CartesianCoordinate(double x, double y, double z) {
 		this.x = x;
 		this.y = y;
@@ -99,7 +99,12 @@ public class CartesianCoordinate extends AbstractCoordinate {
 
 	@Override
 	public Coordinate asCartesianCoordinate() {
-		return this;
+		try {
+			return (CartesianCoordinate)this.clone();
+		} catch (CloneNotSupportedException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	@Override
