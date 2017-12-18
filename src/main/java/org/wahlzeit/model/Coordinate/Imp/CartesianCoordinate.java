@@ -20,10 +20,21 @@ public final class CartesianCoordinate extends AbstractCoordinate {
 	private final double x;
 	private final double y;
 	private final double z;	
+	private final double latitude;
+	private final double longitude;
+	private final double radius;
+	private final Coordinate sharedSphericCoordinate;
+	
 	public CartesianCoordinate(double x, double y, double z) {
 		this.x = x;
 		this.y = y;
 		this.z = z;
+		
+		this.longitude =  Math.atan(y/x);
+		this.radius = Math.sqrt(Math.pow(x , 2) + Math.pow(y, 2) + Math.pow(z, 2));	
+		this.latitude = Math.atan(Math.sqrt(	Math.pow(x , 2) + Math.pow(y, 2)) / z);
+		
+		sharedSphericCoordinate = new SpehricCoordinate(getLongitude(),getLatitude(),getRadius());
 	}
 	/*
 	@Override
@@ -66,8 +77,7 @@ public final class CartesianCoordinate extends AbstractCoordinate {
 		return z;
 	}
 
-	public double getLongitude() {		
-		double longitude = Math.atan(y/x);		
+	public double getLongitude() {			
 		try {
 			testPostCondition(longitude);
 		}catch(negativeValueException e){
@@ -76,8 +86,7 @@ public final class CartesianCoordinate extends AbstractCoordinate {
 		return longitude;
 	}
 
-	public double getRadius() { 		
-		double radius = Math.sqrt(Math.pow(x , 2) + Math.pow(y, 2) + Math.pow(z, 2));	
+	public double getRadius() { 			
 		try {
 			testPostCondition(radius);
 		}catch(negativeValueException e){
@@ -87,8 +96,6 @@ public final class CartesianCoordinate extends AbstractCoordinate {
 	}
 
 	public double getLatitude() {
-		
-		double latitude = Math.atan(Math.sqrt(	Math.pow(x , 2) + Math.pow(y, 2)) / z);
 		try {
 			testPostCondition(latitude);
 		}catch(negativeValueException e){
@@ -109,7 +116,7 @@ public final class CartesianCoordinate extends AbstractCoordinate {
 
 	@Override
 	public Coordinate asSphericCoordinate() {
-		return new SpehricCoordinate(getLongitude(),getLatitude(),getRadius());
+		return sharedSphericCoordinate;
 	}
 
 

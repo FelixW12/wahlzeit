@@ -19,12 +19,22 @@ public final class SpehricCoordinate extends AbstractCoordinate {
 	private final double latitude;
 	private final double longitude;
 	private final double radius;
+	private final Coordinate sharedCartesianCoordinate;
+	private final double x;
+	private final double y;
+	private final double z;
 	
 	public SpehricCoordinate( double latitude,double longitude,double radius) {
 		this.latitude = latitude;
 		this.longitude = longitude;
 		this.radius = radius;
+		x = getRadius()* Math.sin(getLatitude())*Math.cos(getLongitude());
+		y = getRadius()* Math.sin(getLatitude())*Math.sin(getLongitude());
+		z = getRadius()* Math.cos(getLatitude());
+		
+		sharedCartesianCoordinate= new CartesianCoordinate(getX(),getY(),getZ());		
 	}
+	
 	
 	/*
 	@Override
@@ -54,20 +64,16 @@ public final class SpehricCoordinate extends AbstractCoordinate {
 		return false;
 	} */
 
-	public double getX() {
-			
-		double x = getRadius()* Math.sin(getLatitude())*Math.cos(getLongitude());
+	public double getX() {		
 		return x;	
 		
 	}
 
 	public double getY() {
-		double y = getRadius()* Math.sin(getLatitude())*Math.sin(getLongitude());
 		return y;	
 	}
 
 	public double getZ() {
-		double z = getRadius()* Math.cos(getLatitude());
 		return z;	
 	}
 
@@ -100,7 +106,7 @@ public final class SpehricCoordinate extends AbstractCoordinate {
 
 	@Override
 	public Coordinate asCartesianCoordinate() {
-		return new CartesianCoordinate(getX(),getY(),getZ());
+		return sharedCartesianCoordinate;
 	}
 
 	@Override
