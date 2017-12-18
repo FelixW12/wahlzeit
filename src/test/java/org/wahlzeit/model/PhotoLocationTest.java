@@ -14,6 +14,7 @@ package org.wahlzeit.model;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.wahlzeit.model.Coordinate.Coordinate;
 import org.wahlzeit.model.Coordinate.Imp.CartesianCoordinate;
 import org.wahlzeit.model.Coordinate.Imp.SpehricCoordinate;
 
@@ -136,9 +137,10 @@ public class PhotoLocationTest {
 	}
 	@Test 
 	public void photoLocationDistanceRandomNumberTestSphericalIsEqual() {	
-		photoLocation.setCoordinate(new SpehricCoordinate(8.6023252670426,0.92729521800161,0.62024948598282));		
+		Coordinate testCor = new SpehricCoordinate(8.6023252670426,0.92729521800161,0.62024948598282);
+		photoLocation.setCoordinate(testCor);		
 		
-		photoLocation2.setCoordinate(new CartesianCoordinate(3,4,7));
+		photoLocation2.setCoordinate(testCor.asCartesianCoordinate());
 		assertTrue(photoLocation.getCoordinate().isEqual(photoLocation2.getCoordinate()));
 	}
 

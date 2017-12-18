@@ -74,16 +74,9 @@ public abstract class AbstractCoordinate implements Coordinate {
 			  System.err.println(e.getMessage());
 			  return false;
 		}	
-		
-		if(getLatitude() == c.getLatitude()) {
-			if(getLongitude() == c.getLongitude()) {
-				if(getRadius() == c.getRadius()) {
-					return true;
-				}
-			}					
-		}
-		assertClassInvariants();
-		return false;
+		assertClassInvariants();		
+		return this == c;	
+	
 	}
 	
 	public void testPrecondition(Object ob ) throws coordinateNullException{				
