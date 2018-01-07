@@ -11,9 +11,17 @@ package org.wahlzeit.model.Coordinate.Imp;
 
 import org.wahlzeit.model.Coordinate.AbstractCoordinate;
 import org.wahlzeit.model.Coordinate.Coordinate;
+
+import java.util.HashSet;
+
 import org.wahlzeit.model.coordinateNullException;
 import org.wahlzeit.model.negativeValueException;
 
+
+@DesignPattern(
+	    patternName = "Compositum",
+		participants = {"Component", "Composite", "Leaf"}
+	)
 public final class SpehricCoordinate extends AbstractCoordinate {
 
 	private final double latitude;
@@ -22,9 +30,20 @@ public final class SpehricCoordinate extends AbstractCoordinate {
 	private final Coordinate sharedCartesianCoordinate;
 	private final double x;
 	private final double y;
-	private final double z;
+	private final double z;	
 	
-	public SpehricCoordinate( double latitude,double longitude,double radius) {
+	public SpehricCoordinate( double latitude,double longitude,double radius) throws IllegalArgumentException {
+		
+		if(latitude < 0) {
+			  throw new IllegalArgumentException("latitude is not allowed to be below zero)");
+		}
+		if(longitude < 0) {
+			  throw new IllegalArgumentException("longitude is not allowed to be below zero)");
+		}
+		if(radius < 0) {
+			  throw new IllegalArgumentException("radius is not allowed to be below zero)");
+		}		
+		
 		this.latitude = latitude;
 		this.longitude = longitude;
 		this.radius = radius;
@@ -33,36 +52,11 @@ public final class SpehricCoordinate extends AbstractCoordinate {
 		z = getRadius()* Math.cos(getLatitude());
 		
 		sharedCartesianCoordinate= new CartesianCoordinate(getX(),getY(),getZ());		
-	}
 	
 	
-	/*
-	@Override
-	public double getCartesianDistance(Coordinate c) {
-		return Math.sqrt(Math.pow(getX() - c.getX(), 2) + Math.pow(getY() - c.getY(), 2) + Math.pow(getZ() - c.getZ(), 2));
 	}
+	
 
-	@Override
-	public double getSphericDistance(Coordinate c) {
-		return 6371 *Math.acos(Math.cos(getLongitude())*Math.cos(c.getLongitude()) + Math.sin(getLongitude())*Math.sin(c.getLongitude())*Math.cos(getLatitude()-c.getLatitude()));
-	}
-
-	@Override
-	public double getDistance(Coordinate c) {
-		return getCartesianDistance(c);
-	}
-
-	@Override
-	public boolean isEqual(Coordinate c) {
-		if(getLatitude() == c.getLatitude()) {
-			if(getLongitude() == c.getLongitude()) {
-				if(getRadius() == c.getRadius()) {
-					return true;
-				}
-			}					
-		}
-		return false;
-	} */
 
 	public double getX() {		
 		return x;	
@@ -118,5 +112,15 @@ public final class SpehricCoordinate extends AbstractCoordinate {
 		}
 		return null;
 	}
+	
+	public static SpehricCoordinate getSpehricInstance(SpehricCoordinate coord) {
+		SpehricCoordinate myCoor = (SpehricCoordinate) sharedInstances.get(coord.hashCode());
+		if(myCoor == null) {
+			sharedInstances.put(coord.hashCode(), coord);
+			return coord;
+		}
+		return myCoor;
+ 	}
+
 
 }

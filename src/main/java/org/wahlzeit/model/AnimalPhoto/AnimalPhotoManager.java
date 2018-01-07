@@ -18,9 +18,14 @@ import org.wahlzeit.model.PhotoFactory;
 import org.wahlzeit.model.PhotoId;
 import org.wahlzeit.model.PhotoManager;
 import org.wahlzeit.model.PhotoUtil;
+import org.wahlzeit.model.Coordinate.Imp.DesignPattern;
 
 import com.google.appengine.api.images.Image;
 
+@DesignPattern(
+	    patternName = "Mediator",
+		participants = {"concreteMediator"}
+	)
 public class AnimalPhotoManager extends PhotoManager {
 	
 	/**

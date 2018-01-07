@@ -16,8 +16,14 @@ import java.util.logging.Logger;
 import org.wahlzeit.model.Photo;
 import org.wahlzeit.model.PhotoFactory;
 import org.wahlzeit.model.PhotoId;
+import org.wahlzeit.model.Coordinate.Imp.DesignPattern;
 import org.wahlzeit.services.LogBuilder;
 
+
+@DesignPattern(
+	    patternName = "ConcreteFactory",
+		participants = {"Factory"}
+	)
 public class AnimalPhotoFactory extends PhotoFactory {
 
 	@Override

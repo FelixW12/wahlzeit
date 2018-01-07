@@ -14,7 +14,10 @@ import org.wahlzeit.model.Coordinate.Coordinate;
 import org.wahlzeit.model.coordinateNullException;
 import org.wahlzeit.model.negativeValueException;
 
-
+@DesignPattern(
+	    patternName = "Compositum",
+		participants = {"Component", "Composite", "Leaf"}
+	)
 public final class CartesianCoordinate extends AbstractCoordinate {
 
 	private final double x;
@@ -25,7 +28,8 @@ public final class CartesianCoordinate extends AbstractCoordinate {
 	private final double radius;
 	private final Coordinate sharedSphericCoordinate;
 	
-	public CartesianCoordinate(double x, double y, double z) {
+	public CartesianCoordinate(double x, double y, double z) {		
+		
 		this.x = x;
 		this.y = y;
 		this.z = z;
@@ -36,34 +40,7 @@ public final class CartesianCoordinate extends AbstractCoordinate {
 		
 		sharedSphericCoordinate = new SpehricCoordinate(getLongitude(),getLatitude(),getRadius());
 	}
-	/*
-	@Override
-	public double getCartesianDistance(Coordinate c) {
-		return Math.sqrt(Math.pow(x - c.getX(), 2) + Math.pow(y - c.getY(), 2) + Math.pow(z - c.getZ(), 2));
-	}
 
-	@Override
-	public double getSphericDistance(Coordinate c) {		
-		//Erdradius 6371km wie im Fsi-Informatikforum empfohlen	
-		return 6371 *Math.acos(Math.cos(getLongitude())*Math.cos(c.getLongitude()) + Math.sin(getLongitude())*Math.sin(c.getLongitude())*Math.cos(getLatitude()-c.getLatitude()));	
-	}
-
-	@Override
-	public double getDistance(Coordinate c) {
-		return getCartesianDistance(c);
-	}
-
-	@Override
-	public boolean isEqual(Coordinate c) {
-		if(x == c.getX()) {
-			if(y == c.getY()) {
-				if(z == c.getZ()) {
-					return true;
-				}
-			}					
-		}
-		return false;
-	} */
 
 	public double getX() {
 		return x;
@@ -103,6 +80,15 @@ public final class CartesianCoordinate extends AbstractCoordinate {
 		}
 		return latitude;	 
 	}
+	
+	public static CartesianCoordinate getCartesianInstance(CartesianCoordinate coord) {
+		CartesianCoordinate myCoor = (CartesianCoordinate) sharedInstances.get(coord.hashCode());
+		if(myCoor == null) {
+			sharedInstances.put(coord.hashCode(), coord);
+			return coord;
+		}
+		return myCoor;
+ 	}
 
 	@Override
 	public Coordinate asCartesianCoordinate() {
