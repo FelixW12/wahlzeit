@@ -21,7 +21,6 @@
 package org.wahlzeit.model;
 
 import org.wahlzeit.model.AnimalPhoto.AnimalPhotoFactory;
-import org.wahlzeit.model.Coordinate.Imp.DesignPattern;
 import org.wahlzeit.services.LogBuilder;
 
 import java.util.logging.Logger;

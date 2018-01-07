@@ -137,7 +137,8 @@ public class PhotoLocationTest {
 	}
 	@Test 
 	public void photoLocationDistanceRandomNumberTestSphericalIsEqual() {	
-		Coordinate testCor = new SpehricCoordinate(8.6023252670426,0.92729521800161,0.62024948598282);
+		Coordinate testCor = SpehricCoordinate.getSpehricInstance(new SpehricCoordinate(8.6023252670426,0.92729521800161,0.62024948598282));		
+		
 		photoLocation.setCoordinate(testCor);		
 		
 		photoLocation2.setCoordinate(testCor.asCartesianCoordinate());

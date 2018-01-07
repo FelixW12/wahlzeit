@@ -14,6 +14,7 @@ import org.wahlzeit.model.Coordinate.Coordinate;
 
 import java.util.HashSet;
 
+import org.wahlzeit.model.DesignPattern;
 import org.wahlzeit.model.coordinateNullException;
 import org.wahlzeit.model.negativeValueException;
 
