@@ -20,8 +20,8 @@ import org.wahlzeit.model.negativeValueException;
 
 
 @DesignPattern(
-	    patternName = "Compositum",
-		participants = {"Component", "Composite", "Leaf"}
+	    patternName = "Multition",
+		participants = {"instances"}
 	)
 public final class SpehricCoordinate extends AbstractCoordinate {
 

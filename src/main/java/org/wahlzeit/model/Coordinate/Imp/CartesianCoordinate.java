@@ -11,12 +11,13 @@ package org.wahlzeit.model.Coordinate.Imp;
 
 import org.wahlzeit.model.Coordinate.AbstractCoordinate;
 import org.wahlzeit.model.Coordinate.Coordinate;
+import org.wahlzeit.model.DesignPattern;
 import org.wahlzeit.model.coordinateNullException;
 import org.wahlzeit.model.negativeValueException;
 
 @DesignPattern(
-	    patternName = "Compositum",
-		participants = {"Component", "Composite", "Leaf"}
+	    patternName = "Multition",
+		participants = {"instances"}
 	)
 public final class CartesianCoordinate extends AbstractCoordinate {
 
