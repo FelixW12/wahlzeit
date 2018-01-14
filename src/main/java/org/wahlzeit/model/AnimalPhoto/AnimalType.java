@@ -40,7 +40,11 @@ public class AnimalType extends DataObject{
 		 }
 		 return false;
 		 } 
-	 
+	 public boolean isSubType() {
+		 if(superType == null) return true;
+		 
+		 return false;
+	 }
 	
 	public AnimalType(String typeName) {
 		this.typeName = typeName;
