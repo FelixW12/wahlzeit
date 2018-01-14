@@ -27,14 +27,14 @@ public class AnimalPhotoFactory extends PhotoFactory {
 
 	@Override
 	public AnimalPhoto createPhoto() {
-		return new AnimalPhoto();
+		return new AnimalPhoto("Tier", "TierType");
 	}
 	
 
 
 	@Override
 	public AnimalPhoto createPhoto(PhotoId id) {
-		return new AnimalPhoto(id);
+		return new AnimalPhoto(id,"Tier", "TierType");
 	}
 	
 	 

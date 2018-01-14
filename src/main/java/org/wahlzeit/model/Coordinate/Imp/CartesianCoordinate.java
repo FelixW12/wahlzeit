@@ -27,7 +27,7 @@ public final class CartesianCoordinate extends AbstractCoordinate {
 	private final double latitude;
 	private final double longitude;
 	private final double radius;
-	private final Coordinate sharedSphericCoordinate;
+
 	
 	public CartesianCoordinate(double x, double y, double z) {		
 		
@@ -35,11 +35,9 @@ public final class CartesianCoordinate extends AbstractCoordinate {
 		this.y = y;
 		this.z = z;
 		
-		this.longitude =  Math.atan(y/x);
+		this.longitude =  Math.atan2(y,x);
 		this.radius = Math.sqrt(Math.pow(x , 2) + Math.pow(y, 2) + Math.pow(z, 2));	
 		this.latitude = Math.atan(Math.sqrt(	Math.pow(x , 2) + Math.pow(y, 2)) / z);
-		
-		sharedSphericCoordinate = new SpehricCoordinate(getLongitude(),getLatitude(),getRadius());
 	}
 
 
@@ -103,7 +101,7 @@ public final class CartesianCoordinate extends AbstractCoordinate {
 
 	@Override
 	public Coordinate asSphericCoordinate() {
-		return sharedSphericCoordinate;
+		return new SpehricCoordinate(getLatitude(),getLongitude(),getRadius());
 	}
 
 

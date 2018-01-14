@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 import org.wahlzeit.model.coordinateNullException;
 import org.wahlzeit.model.negativeValueException;
-import org.wahlzeit.model.Coordinate.Imp.DesignPattern;
+
 
 
 public abstract class AbstractCoordinate implements Coordinate {
@@ -81,7 +81,6 @@ public abstract class AbstractCoordinate implements Coordinate {
 		}	
 		assertClassInvariants();		
 		return this == c;	
-	
 	}
 	
 	public void testPrecondition(Object ob ) throws coordinateNullException{				

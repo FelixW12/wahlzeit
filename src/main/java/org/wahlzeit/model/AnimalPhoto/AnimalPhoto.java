@@ -16,15 +16,17 @@ import org.wahlzeit.model.PhotoId;
 
 public class AnimalPhoto extends Photo {
 	
+	final Animal animal;
 	
-	public AnimalPhoto() {
+	public AnimalPhoto(String animalName, String animalTypeName) {
 		id = PhotoId.getNextId();
+		animal = AnimalManager.createAnimal(animalName, animalTypeName);
 		incWriteCount();
 	}
 
-	public AnimalPhoto(PhotoId myId) {
+	public AnimalPhoto(PhotoId myId, String animalName, String animalTypeName) {
 		id = myId;
-
+		this.animal = AnimalManager.createAnimal(animalName, animalTypeName);
 		incWriteCount();
 	}
 }
