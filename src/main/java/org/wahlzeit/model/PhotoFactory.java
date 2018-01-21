@@ -20,6 +20,7 @@
 
 package org.wahlzeit.model;
 
+import org.wahlzeit.model.AnimalPhoto.AnimalPhoto;
 import org.wahlzeit.model.AnimalPhoto.AnimalPhotoFactory;
 import org.wahlzeit.services.LogBuilder;
 
@@ -82,14 +83,14 @@ public class PhotoFactory {
 	 * @methodtype factory
 	 */
 	public Photo createPhoto() {
-		return new Photo();
+		return new AnimalPhoto("random","random");
 	}
 
 	/**
 	 * Creates a new photo with the specified id
 	 */
 	public Photo createPhoto(PhotoId id) {
-		return new Photo(id);
+		return new AnimalPhoto(id,"random","random");
 	}
 
 	/**
